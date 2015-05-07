@@ -7,11 +7,10 @@ $.fn.suffix = function () {
         var instance = this;
         var suffix = $(this).data("suffix");
         var suffix_length = suffix.length;
-        var placeholder = $(this).data("placeholder");
+
         var touched = false;
         var textfield = $(this);
         
-        $(textfield).val("").attr("placeholder", placeholder + suffix);
         $(textfield).on("focus", function () {
             if (!touched) {
                 $(textfield).val(suffix);
@@ -55,7 +54,7 @@ $.fn.suffix = function () {
         
         $(textfield).blur(function () {
             if ($(this).val() === suffix || $(this).val() === '') {
-                $(textfield).val("").attr("placeholder", placeholder + suffix);
+                $(textfield).val("");
                 touched = false;
             }
         });
